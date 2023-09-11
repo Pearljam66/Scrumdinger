@@ -7,8 +7,7 @@
 
 import Foundation
 
-// Create a DailyScrum structure with title, attendees, lengthInMinutes, and theme properties.
-struct DailyScrum: Identifiable {
+struct DailyScrum: Identifiable, Codable {
     let id: UUID
     var title: String
     var attendees: [Attendee]
@@ -21,7 +20,9 @@ struct DailyScrum: Identifiable {
             lengthInMinutes = Int(newValue)
         }
     }
+
     var theme: Theme
+    var history: [History] = []
 
     init(id: UUID = UUID(), title: String, attendees: [String], lengthInMinutes: Int, theme: Theme) {
         self.id = id
@@ -33,7 +34,7 @@ struct DailyScrum: Identifiable {
 }
 
 extension DailyScrum {
-    struct Attendee: Identifiable {
+    struct Attendee: Identifiable, Codable {
         let id: UUID
         var name: String
 
@@ -48,7 +49,6 @@ extension DailyScrum {
     }
 }
 
-// Add an extension that provides some sample data.
 extension DailyScrum {
     static var sampleData: [DailyScrum] {
         [

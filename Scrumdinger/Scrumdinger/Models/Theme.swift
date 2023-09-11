@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Theme: String, CaseIterable, Identifiable {
+enum Theme: String, CaseIterable, Identifiable, Codable {
     case bubblegum
     case buttercup
     case indigo
@@ -25,8 +25,6 @@ enum Theme: String, CaseIterable, Identifiable {
     case teal
     case yellow
 
-    // A color property named accentColor that returns .black or .white depending on the value of self.
-    // The accent color provides a high-contrast complement to the theme's main color, ensuring your views remain accessible.
     var accentColor: Color {
         switch self {
         case .bubblegum, .buttercup, .lavender, .orange, .periwinkle, .poppy, .seafoam, .sky, .tan, .teal, .yellow: return .black
@@ -34,8 +32,6 @@ enum Theme: String, CaseIterable, Identifiable {
         }
     }
 
-    // Add a Color property named mainColor that creates a color using the enumeration's raw value.
-    // This property initializes a color from the asset catalog.
     var mainColor: Color {
         Color(rawValue)
     }
